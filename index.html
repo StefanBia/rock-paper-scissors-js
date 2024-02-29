@@ -16,7 +16,11 @@
         let playerChoice;
 
         function getComputerChoice(){
-            computerChoice = Math.random() % 3;//generate random computer response
+            computerChoice = getRandomInt(3);//generate random computer response
+        }
+
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * max);
         }
 
         function playRound(computerChoice, playerChoice){
@@ -48,6 +52,41 @@
                 default: return "Invalid commands!";
             }
         }
+
+        function playGame(){
+
+            for(let i = 0; i < 5; i++){
+                console.log("Round "+i+", pick an element!");
+                let ok = false;
+                while(!ok){//player must input correct string
+                    let playerInput = prompt("Write your answer!");
+                    ok = true;
+                    playerInput.toLocaleLowerCase();
+
+                    switch (playerInput){
+                        case "rock" : 
+                            playerChoice = 0;
+                        break;
+                        case "paper" : 
+                            playerChoice = 1;
+                        break;
+                        case "scissors" : 
+                            playerChoice = 2;
+                        break;
+                        default : console.log("Wrong input!!");
+                        ok = false;
+                    }
+                }
+                
+
+                getComputerChoice();
+                console.log(computerChoice +"  "+ playerChoice);
+                let result = playRound(computerChoice,playerChoice);
+                console.log(result);
+            }
+        }
+
+        playGame();
 
     </script>
 </body>
