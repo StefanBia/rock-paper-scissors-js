@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        ///rock = 0
+        ///paper = 1
+        ///scissors = 2
+        let computerChoice;
+        let playerChoice;
+
+        function getComputerChoice(){
+            computerChoice = Math.random() % 3;//generate random computer response
+        }
+
+        function playRound(computerChoice, playerChoice){
+            switch(computerChoice){
+                case 0 : 
+                    if(playerChoice === 0)
+                        return "Tie!";
+                    if(playerChoice === 2)
+                        return "You Lose!";
+                    if(playerChoice === 1)
+                        return "You Win!";
+                break;
+                case 1 :
+                    if(playerChoice === 1)
+                            return "Tie!";
+                    if(playerChoice === 0)
+                        return "You Lose!";
+                    if(playerChoice === 2)
+                        return "You Win!";
+                break;
+                case 2 :
+                    if(playerChoice === 2)
+                            return "Tie!";
+                    if(playerChoice === 0)
+                        return "You Lose!";
+                    if(playerChoice === 1)
+                        return "You Win!";
+                break;
+                default: return "Invalid commands!";
+            }
+        }
+
+    </script>
+</body>
+</html>
