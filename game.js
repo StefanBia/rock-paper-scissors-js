@@ -5,8 +5,9 @@
         ///scissors = 2
         let computerChoice;
         let playerChoice;
-        let playerScore;
-        let computerScore;
+        let playerScore = 0;
+        let computerScore = 0;
+        let nrRounds = 1;
 
         let paperBtn = document.querySelector('.paper-button');
         let rockBtn = document.querySelector('.rock-button');
@@ -72,12 +73,10 @@
         }
 
         function playGame(playerInput){
-            playerScore = 0;
-            computerScore = 0;
-            for(let i = 0; i < 5; i++){
+            
 
                 
-                console.log("Round "+i+", pick an element!");
+              
               
                     playerInput.toLocaleLowerCase();
 
@@ -102,14 +101,29 @@
                 let result = playRound(computerChoice,playerChoice);
                 resultText.textContent=result;
                 console.log(result);
-            }
+            
+                getScore();
+        }
 
-            if(playerScore > computerScore)
-                console.log("You won the game! Congrats!");
-            else if(playerScore < computerScore)
-                console.log("You lost the game! Try again sometime!");
-            else
-                console.log("The game was a TIE! Wow!");
+        function getScore(){
+
+
+            if(nrRounds === 5){
+                if(playerScore > computerScore)
+                resultText.textContent="You won the game! Congrats!";
+                else if(playerScore < computerScore)
+                resultText.textContent="You lost the game! Try again sometime!";
+                else
+                resultText.textContent="The game was a TIE! Wow!";
+
+                playerScore = 0;
+                computerScore = 0;
+                nrRounds = 1;
+            }
+            else{
+                nrRounds++;
+            }
+      
         }
 
         rockBtn.addEventListener('click', function() {
