@@ -1,10 +1,19 @@
 ///rock = 0
         ///paper = 1
+
+
         ///scissors = 2
         let computerChoice;
         let playerChoice;
         let playerScore;
         let computerScore;
+
+        let paperBtn = document.querySelector('.paper-button');
+        let rockBtn = document.querySelector('.rock-button');
+        let scissorsBtn = document.querySelector('.scissors-button');
+        let resultText = document.querySelector('#result-text');
+
+
 
         function getComputerChoice(){
             computerChoice = getRandomInt(3);//generate random computer response
@@ -62,17 +71,14 @@
             }
         }
 
-        function playGame(){
+        function playGame(playerInput){
             playerScore = 0;
             computerScore = 0;
             for(let i = 0; i < 5; i++){
 
                 
                 console.log("Round "+i+", pick an element!");
-                let ok = false;
-                while(!ok){//player must input correct string
-                    let playerInput = prompt("Write your answer!");
-                    ok = true;
+              
                     playerInput.toLocaleLowerCase();
 
                     switch (playerInput){
@@ -88,12 +94,13 @@
                         default : console.log("Wrong input!!");
                         ok = false;
                     }
-                }
+                
                 
 
                 getComputerChoice();
                 console.log(computerChoice +"  "+ playerChoice);
                 let result = playRound(computerChoice,playerChoice);
+                resultText.textContent=result;
                 console.log(result);
             }
 
@@ -105,4 +112,15 @@
                 console.log("The game was a TIE! Wow!");
         }
 
-        playGame();
+        rockBtn.addEventListener('click', function() {
+            playGame('rock');
+        });
+        paperBtn.addEventListener('click', function() {
+            playGame('paper');
+        });
+        scissorsBtn.addEventListener('click', function() {
+            playGame('scissors');
+        });
+        
+
+ 
